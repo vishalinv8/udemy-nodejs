@@ -102,10 +102,29 @@ The destructuring assignment uses similar syntax, but on the left-hand side of t
 let a, b, rest;
 [a,b,] = [10,20];
 console.log("a", a, "b", b);
+
+//Assigning the rest of an array to a variable named rest
 [a,b,...rest] = [10,20,30,40,50,60,70,80,90,100];
 console.log("a", a, "b", b, "rest", rest);
 
+// Array destructuring
+const foo = ["one", "two", "three", "four", "five", "six"];
+[x, y, z, ...k] = foo;
+console.log(x, y, z, k);
 
+// A variable can be assigned its value via destructuring separate from the variable's declaration.
+var a1, b1;
+[a1, b1] = [1, 2];
+console.log(a1);
+console.log(b1); 
 
+// Default values in destructuring
+var a2,b2;
+[a2=10, b2=15] = [500];
+console.log("a2", a2);
+console.log("b2", b2); 
 
+// Object destructuring
+const {name, age} = person;
+console.log("name", name, "age", age);
 
