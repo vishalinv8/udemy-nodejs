@@ -28,10 +28,10 @@ const hobbies = ["Sports", "Cooking", "Reading"];
 
 console.log("Elements of hobbies", hobbies);
 
-// console.log("Array elements here...");
-// for (let hobby of hobbies){
-//     console.log(hobby);
-// }
+console.log("Array elements here...");
+for (let hobby of hobbies){
+    console.log(hobby);
+}
 
 console.log("Map", hobbies.map( element => 'element : '+element)); // traverse each element of array
 console.log(hobbies);
@@ -65,7 +65,8 @@ hobbies.push("VideoGame");
 hobbies.push("Painting");
 console.log(hobbies);
 
-console.log("slice", hobbies.slice(1));
+console.log("slice()", hobbies.slice()); // copied entire array from start to end
+console.log("slice(1,2)", hobbies.slice(1,2)); // copied entire array from start to end
 console.log(hobbies);
 
 console.log("splice", hobbies.splice(2,1,"Running", "Writing"));
@@ -78,15 +79,31 @@ console.log("concat", hobbies.concat());// Add element at begin
 console.log(hobbies);
 
 /************ Rest and Spread Operator ****************/
-const copiedArray = [...hobbies];
+const copiedArray = [...hobbies];   // spread operator for array
 console.log("Spread Array", copiedArray);
 
-const copiedObject = {...person};
+const copiedObject = {...person}; // spread operator for object
 console.log("Spread Object", copiedObject);
 
+const restArray = (...args) =>{
+    return args;
+}
+console.log("restOperator", restArray(1,2,3,4,5,6,7,8,9,10)); // rest operator for array
 
+/********************* Object Destructuring  *****************/
 
+/*
+Destructuring - The destructuring syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
 
+The destructuring assignment uses similar syntax, but on the left-hand side of the assignment to define what values to unpack from the sourced variable
+
+*/
+
+let a, b, rest;
+[a,b,] = [10,20];
+console.log("a", a, "b", b);
+[a,b,...rest] = [10,20,30,40,50,60,70,80,90,100];
+console.log("a", a, "b", b, "rest", rest);
 
 
 
