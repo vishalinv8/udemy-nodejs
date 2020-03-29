@@ -15,7 +15,7 @@ const person = {
     name: "Vijaydinanath",
     age: 75,
     profession(){
-        console.log("i am an Actor")
+        console.log("i am an Actor");
     }
 };
 
@@ -125,6 +125,27 @@ console.log("a2", a2);
 console.log("b2", b2); 
 
 // Object destructuring
-const {name, age} = person;
+const {name, age, profession} = person;
 console.log("name", name, "age", age);
+
+/* 
+
+Template Literals - shorter and easier to read than the "old" way of concatenating strings
+ 
+Template literals are string literals allowing embedded expressions. You can use multi-line strings and string interpolation features with them.
+
+Template literals are enclosed by the backtick (` `)  (grave accent) character instead of double or single quotes.
+
+Template literals can contain placeholders
+
+To escape a backtick in a template literal, put a backslash (\) before the backtick
+
+*/
+
+console.log(`My name is ${name}. My Age 
+is ${age}. My Profession`);
+
+
+
+
 
