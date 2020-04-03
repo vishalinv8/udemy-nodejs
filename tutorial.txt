@@ -38,7 +38,7 @@ Syntax Errors
 Run time Errors
 Logical Errors
 
-#### How web work ###
+################# How web work #################
 Client => Request => Server => Response => Client
 
 ### NodeJs Program LifeCycle and Event Loop 
@@ -51,6 +51,8 @@ running your logic.
 3) Note: The createServer() event nevers finishes by default.
 
 Parse Request data is chunks (Stream & Buffer)
+
+
 
 
 
