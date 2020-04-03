@@ -52,6 +52,22 @@ running your logic.
 
 Parse Request data is chunks (Stream & Buffer)
 
+### What is Express JS ###
+
+-> npm install --save express
+
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It facilitates the rapid development of Node based Web applications
+
+Framework: Helper functions, tools & rules that help you build your application.
+
+### Alternatives to Express ### 
+
+1) Vanilla Node.JS
+2) Adonis.js
+3) Koa
+4) Sails.js
+
+
 
 
 
