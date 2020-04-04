@@ -1,6 +1,5 @@
 const http = require("http");
 const fs = require("fs");
-
 const requestHandler = (req, res) => {
     const url = req.url;
     const method = req.method;
@@ -52,7 +51,6 @@ module.exports = {
 
 // module.exports.handler = requestHandler;
 // module.exports.someText = 'Some text here';
-
 // exports.handler = requestHandler;
 // exports.someText = 'Some hardcoded string';
 

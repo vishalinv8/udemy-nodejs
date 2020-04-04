@@ -1,20 +1,9 @@
 const express = require("express");
 const app = express(); 
-
-
-app.use('/', (req, res, next)=>{
-    console.log("This Always Runs!");
-    next();
-});
-
-
-
-app.use('/add-product', (req, res, next) => {
-    res.send(`<h1>Add product form</h1>`);
-});
-
-app.use('/', (req, res, next) => {
-    res.send(`<h1> Home page </h1>`);
-});
-
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded());
+app.use(adminRoutes);
+app.use(shopRoutes);
 app.listen(2020);
