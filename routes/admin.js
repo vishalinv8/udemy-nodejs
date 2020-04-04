@@ -7,7 +7,7 @@ router.get('/add-product', (req, res, next) => {
             <title>Add Product</title>
         </head>
         <body>
-            <form action="/products" method="POST">
+            <form action="/admin/add-product" method="POST">
                 <input type="text" name="title">
                 <button type="submit" name="addProduct" value="addProduct"> Add Product </button>
             </form>
@@ -15,9 +15,8 @@ router.get('/add-product', (req, res, next) => {
     </html>`);
 });
 
-router.post('/products', (req, res, next) => {
+router.post('/add-product', (req, res, next) => {
     console.log(req.body.title);
-    console.log(req.body.addProduct);
     res.redirect('/');
 });
 
