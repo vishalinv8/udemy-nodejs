@@ -23,6 +23,7 @@ router.get('/', (req, res, next)=>{
 });
 
 router.get("/aboutus", (req, res)=>{
+    /*res.sendFile(path.join(rootDir, "views", "aboutus.html"));*/
     var ViewData = {
         path:"/aboutus",
         pageTitle:"About Us",
@@ -32,6 +33,7 @@ router.get("/aboutus", (req, res)=>{
 });
 
 router.get("/contactus", (req, res) =>{
+    /*res.sendFile(path.join(rootDir, "views", "contactus.html"));*/
     var ViewData = {
         path:"/contactus",
         pageTitle:"Contact Us",
