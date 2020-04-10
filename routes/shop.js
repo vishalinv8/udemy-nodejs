@@ -9,17 +9,35 @@ const adminData = require("./admin");
 const router = express.Router();
 
 router.get('/', (req, res, next)=>{
-    /*res.sendFile(path.join(rootDir, "views", "shop.html"));*/
     const products = adminData.products;
-    res.render("shop", {prods: products, pageTitle:"My Shop Home", path:"/"});
+    /*res.sendFile(path.join(rootDir, "views", "shop.html"));*/
+    var ViewData = {
+        path:"/",
+        prods: products,
+        pageTitle:"My Shop hbs",
+        hasProducts: products.length > 0 ? true:false,
+        activeShop: true,
+        productCSS: true
+    };
+    res.render("shop", ViewData);
 });
 
 router.get("/aboutus", (req, res)=>{
-    res.render("aboutus", {pageTitle:"About Us", path:"/aboutus"});
+    var ViewData = {
+        path:"/aboutus",
+        pageTitle:"About Us",
+        activeAboutus:true
+    };
+    res.render("aboutus", ViewData);
 });
 
 router.get("/contactus", (req, res) =>{
-    res.render("contactus", {pageTitle:"Contact Us", path:"/contactus"});
+    var ViewData = {
+        path:"/contactus",
+        pageTitle:"Contact Us",
+        activeAboutus:true
+    };
+    res.render("contactus",ViewData);
 });
 
 module.exports = router;

@@ -8,9 +8,9 @@ block mainContent
             if prods.length > 0
                 div(class="grid")
                     each product in prods
-                        article(class="card product-item")
+                        article(class="card product-item") 
                             header(class="card__header")
-                                h1(class="product__title") #{product.title}
+                                h1(class="product__title") #{product.title}  ...pug
                             div(class="card__image")
                                 image(src="https://www.adazing.com/select/colors/preview-06.jpg", alt="Book" width="200", height="200")
                             div(class="card_content")
