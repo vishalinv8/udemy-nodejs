@@ -67,8 +67,12 @@ Framework: Helper functions, tools & rules that help you build your application.
 3) Koa
 4) Sails.js
 
+### Template Engines Types ###
 
-Chapter 73 to be continued...
+1) EJS template engine 
+2) Pug (Jade) template engine
+3) Handlbars template engine
+
 
 
 
