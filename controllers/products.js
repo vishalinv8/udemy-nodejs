@@ -17,7 +17,7 @@ exports.postAddProduct = (req, res, next) => {
     res.redirect('/');
 };
 
-exports.getProducts = (req, res, next)=>{
+exports.getProducts = (req, res, next) => {
     Product.fetchAll((products)=>{
         var ViewData = {
             path:"/",
@@ -28,6 +28,6 @@ exports.getProducts = (req, res, next)=>{
             productCSS: true
         };
         res.render("shop", ViewData);
-    });    
+    });
 };
 
