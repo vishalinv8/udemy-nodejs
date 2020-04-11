@@ -23,9 +23,11 @@ const getProductsFromFile = (callback)=>{
 
 module.exports = class Product{
     
-    constructor(prodTitle){
-        this.title = prodTitle;
-        this.price = this.getRandomNumber(1,99);
+    constructor(title, imageUrl, price, description){
+        this.title = title;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.description = description;
     }
     
     save(){
@@ -40,9 +42,4 @@ module.exports = class Product{
     static fetchAll(callback){
         getProductsFromFile(callback);
     }
-
-    getRandomNumber(min, max) {
-        return Math.floor(  Math.random() * (max - min + 1) + min );
-    }
-
 };
