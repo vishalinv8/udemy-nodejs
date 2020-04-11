@@ -14,7 +14,7 @@ router.get('/', (req, res, next)=>{
     var ViewData = {
         path:"/",
         prods: products,
-        pageTitle:"My Shop hbs",
+        pageTitle:"My Shop",
         hasProducts: products.length > 0 ? true:false,
         activeShop: true,
         productCSS: true

@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= pageTitle %></title>
-    <link rel="stylesheet" href="/css/main.css">
+<%- include("includes/header.ejs") %>
+
 </head>
+
 <body>
 
-    <header class="main-header">
-        <nav class="main-header__nav">
-            <ul class="main-header__item-list">
-                <li class="main-header__item"><a class="" href="/">Shop</a></li>
-                <li class="main-header__item"><a class="" href="/admin/add-product">Add Product</a></li>
-                <li class="main-header__item"><a class="active" href="/aboutus">AboutUs</a></li>
-                <li class="main-header__item"><a class="" href="/contactus">ContactUs</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include("includes/navigation.ejs") %>
 
-    <h1>About Us coming soon...</h1>    
-</body>
-</html>
+    <h3>About Us coming soon...</h3>    
+
+<%- include("includes/footer.ejs") %>
