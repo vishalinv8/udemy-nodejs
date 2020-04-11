@@ -3,7 +3,7 @@ const Product = require("../models/product");
 exports.getAddProduct = (req, res, next) => {
     var ViewData = {
         path:"/admin/add-product",
-        pageTitle:"Add Product Form",
+        pageTitle:"Add Product",
         formsCSS: true, 
         productCSS: true, 
         activeAddProduct: true
@@ -18,15 +18,16 @@ exports.postAddProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next)=>{
-    const products = Product.fetchAll();
-    var ViewData = {
-        path:"/",
-        prods: products,
-        pageTitle:"My Shop",
-        hasProducts: products.length > 0 ? true:false,
-        activeShop: true,
-        productCSS: true
-    };
-    res.render("shop", ViewData);
+    Product.fetchAll((products)=>{
+        var ViewData = {
+            path:"/",
+            prods: products,
+            pageTitle:"My Shop",
+            hasProducts: products.length > 0 ? true:false,
+            activeShop: true,
+            productCSS: true
+        };
+        res.render("shop", ViewData);
+    });    
 };
 

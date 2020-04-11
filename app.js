@@ -30,4 +30,6 @@ app.use(staticRoutes);
 
 app.use(errorController.get404);
 
-app.listen(2020);
+app.listen(2020, (req, res)=>{
+    console.log("Node server listening on 2020");
+});
