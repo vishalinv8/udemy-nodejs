@@ -1,4 +1,4 @@
-const products = [];
+const Product = require("../models/product");
 
 exports.getAddProduct = (req, res, next) => {
     var ViewData = {
@@ -12,11 +12,13 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-    products.push({title:req.body.title});
+    const product = new Product(req.body.title);
+    product.save();
     res.redirect('/');
 };
 
 exports.getProducts = (req, res, next)=>{
+    const products = Product.fetchAll();
     var ViewData = {
         path:"/",
         prods: products,
@@ -28,20 +30,3 @@ exports.getProducts = (req, res, next)=>{
     res.render("shop", ViewData);
 };
 
-exports.aboutus = (req, res)=>{
-    var ViewData = {
-        path:"/aboutus",
-        pageTitle:"About Us",
-        activeAboutus:true
-    };
-    res.render("aboutus", ViewData);
-};
-
-exports.contactus = (req, res) =>{ 
-    var ViewData = {
-        path:"/contactus",
-        pageTitle:"Contact Us",
-        activeAboutus:true
-    };
-    res.render("contactus",ViewData);
-};
