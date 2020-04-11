@@ -8,7 +8,7 @@ exports.getAddProduct = (req, res, next) => {
         productCSS: true, 
         activeAddProduct: true
     };
-    res.render("add-product", ViewData);
+    res.render("admin/add-product", ViewData);
 };
 
 exports.postAddProduct = (req, res, next) => {
@@ -27,7 +27,7 @@ exports.getProducts = (req, res, next) => {
             activeShop: true,
             productCSS: true
         };
-        res.render("shop", ViewData);
+        res.render("shop/shop", ViewData);
     });
 };
 
