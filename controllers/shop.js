@@ -36,7 +36,7 @@ exports.postCart = (req, res, next) => {
     Product.findById(prodId, product => {
       Cart.addProduct(prodId, product.price);
     });
-    res.redirect('/cart');
+    `res`.redirect('/cart');
   };
 
 exports.getCheckout = (req, res, next)=>{
