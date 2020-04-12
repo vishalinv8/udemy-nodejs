@@ -74,6 +74,9 @@ Framework: Helper functions, tools & rules that help you build your application.
 3) Handlbars template engine
 
 
+### Spread Operator and Rest Operator - 
+
+
 #Pending Assignment - 
 Lecture no 93
 

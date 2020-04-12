@@ -1,9 +1,6 @@
 const fs = require("fs");
-
 const path = require("path");
-
 const products = [];
-
 const storagePath = path.join(
     path.dirname(process.mainModule.filename),
     'data',
@@ -21,15 +18,13 @@ const getProductsFromFile = (callback)=>{
     });
 };
 
-module.exports = class Product{
-    
+module.exports = class Product{    
     constructor(title, imageUrl, price, description){
         this.title = title;
         this.imageUrl = imageUrl;
         this.price = price;
         this.description = description;
-    }
-    
+    }    
     save(){
         this.id = this.generateUniqueString();
         getProductsFromFile((products)=>{
@@ -39,11 +34,9 @@ module.exports = class Product{
             });
         });
     }
-
     static fetchAll(callback){
         getProductsFromFile(callback);
     }
-
     static findById(productId, callback){
         getProductsFromFile((products)=>{
             const productInfo = products.find((singleProd) => {
@@ -52,12 +45,7 @@ module.exports = class Product{
             callback(productInfo);
         });
     }
-
     generateUniqueString() {
-        // Math.random should be unique because of its seeding algorithm.
-        // Convert it to base 36 (numbers + letters), and grab the first 9 characters
-        // after the decimal.
         return '_' + Math.random().toString(36).substr(2, 15);
     }
-
 };
