@@ -41,4 +41,13 @@ exports.getOrders = (req, res, next)=>{
         path:"/orders",
         pageTitle:"Your orders"
     });
-}
+};
+
+exports.getProduct = (req, res, next)=>{
+    const productId = req.params.productId;
+    console.log(productId);
+    Product.findById(productId, (prodInfo) => {
+        console.log(prodInfo);
+    });
+    res.redirect('/');
+};

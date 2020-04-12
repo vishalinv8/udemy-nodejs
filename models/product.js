@@ -31,6 +31,7 @@ module.exports = class Product{
     }
     
     save(){
+        this.id = this.generateUniqueString();
         getProductsFromFile((products)=>{
             products.push(this);
             fs.writeFile(storagePath, JSON.stringify(products), (err)=>{
@@ -38,8 +39,25 @@ module.exports = class Product{
             });
         });
     }
-    
+
     static fetchAll(callback){
         getProductsFromFile(callback);
     }
+
+    static findById(productId, callback){
+        getProductsFromFile((products)=>{
+            const productInfo = products.find((singleProd) => {
+                return singleProd.id === productId;
+            });
+            callback(productInfo);
+        });
+    }
+
+    generateUniqueString() {
+        // Math.random should be unique because of its seeding algorithm.
+        // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+        // after the decimal.
+        return '_' + Math.random().toString(36).substr(2, 15);
+    }
+
 };
