@@ -34,4 +34,11 @@ exports.getCheckout = (req, res, next)=>{
         path:"/checkout",
         pageTitle:"Your checkout"
     });
+};
+
+exports.getOrders = (req, res, next)=>{
+    res.render("shop/orders", {
+        path:"/orders",
+        pageTitle:"Your orders"
+    });
 }
