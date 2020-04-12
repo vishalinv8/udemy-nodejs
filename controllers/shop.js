@@ -48,6 +48,16 @@ exports.getProduct = (req, res, next)=>{
     console.log(productId);
     Product.findById(productId, (prodInfo) => {
         console.log(prodInfo);
+        if(typeof prodInfo !== 'undefined'){
+            res.render("shop/product-detail", {
+                path:"/products",
+                product:prodInfo,
+                pageTitle:prodInfo.title + "  Product",
+                extra:""
+            });
+        }
+        else{
+
+        }
     });
-    res.redirect('/');
 };
