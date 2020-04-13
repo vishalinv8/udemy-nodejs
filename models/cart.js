@@ -8,6 +8,7 @@ const cartStorage = path.join(
 );
 
 module.exports = class Cart {
+
   static addProduct(id, productPrice) {
     fs.readFile(cartStorage, (err, fileContent) => {
       let cart = { products: [], totalPrice: 0 };
@@ -35,4 +36,15 @@ module.exports = class Cart {
       });
     });
   }
+
+  static getCart(callback){
+    fs.readFile(cartStorage, (err, fileContent) => {
+      if(err){
+        return;
+      }
+      let cartItems = {...JSON.parse(fileContent)};
+      callback(cartItems);
+    });
+  }
+
 };
