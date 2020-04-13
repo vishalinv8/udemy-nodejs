@@ -1,52 +1,49 @@
 const Product = require("../models/product");
 
 exports.getAddProduct = (req, res, next) => {
-    res.render("admin/add-product", {
+    res.render("admin/edit-product", {
         path:"/admin/add-product",
-        pageTitle:"Add Product"
+        pageTitle:"Add Product",
+        editing:false
     });
 };
-
 exports.postAddProduct = (req, res, next) => {
     let title = req.body.title;
-    let imageUrl = req.body.imageUrl;
     let price = req.body.price;
+    let imageUrl = req.body.imageUrl;
     let description = req.body.description;
-    const product = new Product(title, imageUrl, price, description);
+    const product = new Product(null, title, imageUrl, price, description);
     product.save();
-    res.redirect('/');
+    res.redirect('/admin/products');
 };
-
-exports.getEditProductFrm = (req, res, next) =>{
+exports.getEditProduct = (req, res, next) =>{
     const productId = req.params.productId;
+    const editMode = req.query.edit;
+    if(!editMode){
+        res.redirect('/admin/products');
+    }
+    if(!productId){
+        res.redirect('/admin/products');
+    }
     Product.findById(productId, (productInfo) => {
         res.render("admin/edit-product", {
             path:"/products",
             pageTitle:"Edit Product",
-            product:productInfo
+            product:productInfo,
+            editing:editMode
         });
     });
 };
-
-exports.updateProduct = (req, res, next) => {
+exports.postEditProduct = (req, res, next) => {
     let productId = req.body.productId;
-    let updateData = {
-        price:req.body.price,
-        imageUrl:req.body.imageUrl,
-        description:req.body.description
-    };
-    
-    Product.updateProduct(productId, updateData, (response) => {
-        if(response === 'success'){
-            res.redirect('/admin/edit-product/'+productId);
-        }
-        else{
-            res.redirect("/");
-        }
-    });
-    
+    let updatedTitle = req.body.title;
+    let updatedPrice = req.body.price;
+    let updatedImageUrl = req.body.imageUrl;
+    let updatedDescription = req.body.description;
+    let updatedProduct = new Product(productId, updatedTitle, updatedImageUrl, updatedPrice, updatedDescription);
+    updatedProduct.save();
+    res.redirect('/admin/products');   
 };
-
 exports.getProducts = (req, res, next) => {
     Product.fetchAll( (products) => {
         res.render("admin/allproducts", {
@@ -57,5 +54,3 @@ exports.getProducts = (req, res, next) => {
         });
     });
 };
-
-
