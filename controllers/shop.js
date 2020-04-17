@@ -2,38 +2,51 @@ const Product = require("../models/product");
 const Cart = require('../models/cart');
 
 exports.getProducts = (req, res, next) => {
-    Product.fetchAll((products)=>{
+    Product.fetchAll()
+    .then(([products, fieldData])=>{
         res.render("shop/product-list", {
-            path:"/products",
-            prods: products,
-            pageTitle:"Products",
-            hasProducts: products.length > 0 ? true:false,
-        });
+          path:"/products",
+          prods: products,
+          pageTitle:"Products",
+          hasProducts: products.length > 0 ? true:false,
+      });
+    })
+    .catch((error)=>{
+      console.log("getProducts catch", error);
     });
 };
 
 exports.getProduct = (req, res, next) => {
     const productId = req.params.productId;
-    Product.findById(productId, (prodInfo) => {
-        if(typeof prodInfo !== 'undefined'){
-            res.render("shop/product-detail", {
-                path:"/products",
-                product:prodInfo,
-                pageTitle:prodInfo.title + "  Product",
-                extra:""
-            });
-        }
-    });
+    Product.findById(productId).then(([prodInfo, fieldData])=>{
+      if(typeof prodInfo[0] !== 'undefined'){
+          res.render("shop/product-detail", {
+              path:"/products",
+              product:prodInfo[0],
+              pageTitle:prodInfo[0].title + "  Product",
+              extra:""
+          });
+      }
+      else{
+        res.redirect('/');
+      }
+    }).catch((err)=>{
+      console.log(err);
+    })
 };
 
 exports.getIndex = (req, res, next) => {
-    Product.fetchAll((products)=>{
+    Product.fetchAll()
+    .then(([products, fieldData])=>{
         res.render("shop/index", {
-            path:"/",
-            prods: products,
-            pageTitle:"Shop Home",
-            hasProducts: products.length > 0 ? true:false
-        });
+          path:"/",
+          prods: products,
+          pageTitle:"Shop Home",
+          hasProducts: products.length > 0 ? true:false
+      });
+    })
+    .catch((err)=>{
+      console.log("getIndex catch", err);
     });
 };
 
