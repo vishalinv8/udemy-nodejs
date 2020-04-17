@@ -14,6 +14,16 @@ const staticRoutes = require("./routes/static");
 
 const errorController = require("./controllers/404");
 
+const db = require('./utils/database');
+
+db.execute("SELECT * FROM products")
+.then((results)=>{
+    console.log(results);
+})
+.catch((dbError) => {
+    console.log(dbError);
+});
+
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(express.static(path.join(__dirname, 'public')));
