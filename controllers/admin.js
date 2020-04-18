@@ -13,17 +13,32 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  Product.create({
+  req.user.createProduct({
     title: title,
     price: price,
     imageUrl: imageUrl,
     description: description
-  }).then((results)=>{
+  })
+  .then((results)=>{
     console.log("Product Added!");
     res.redirect('/');
   }).catch((error)=>{
     console.log(error);
-  });  
+  }); 
+
+  // Product.create({
+  //   title: title,
+  //   price: price,
+  //   imageUrl: imageUrl,
+  //   description: description,
+  //   userId: req.user.id
+  // }).then((results)=>{
+  //   console.log("Product Added!");
+  //   res.redirect('/');
+  // }).catch((error)=>{
+  //   console.log(error);
+  // });  
+
 };
 
 exports.getEditProduct = (req, res, next) => {
