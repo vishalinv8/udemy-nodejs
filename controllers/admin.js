@@ -25,7 +25,6 @@ exports.postAddProduct = (req, res, next) => {
   }).catch((error)=>{
     console.log(error);
   }); 
-
   // Product.create({
   //   title: title,
   //   price: price,
@@ -38,7 +37,6 @@ exports.postAddProduct = (req, res, next) => {
   // }).catch((error)=>{
   //   console.log(error);
   // });  
-
 };
 
 exports.getEditProduct = (req, res, next) => {
@@ -47,19 +45,32 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   const prodId = req.params.productId;
-  Product.findByPk(prodId).then((product) => {
-    if (!product) {
+  req.user.getProducts({where:{id:prodId}})
+  .then((products)=>{
+      if (!products[0]) {
       return res.redirect('/');
     }
     res.render('admin/edit-product', {
       pageTitle: 'Edit Product',
       path: '/admin/edit-product',
       editing: editMode,
-      product: product
+      product: products[0]
     });
-  }).catch((error)=>{
-    console.log(error);
-  });
+  }).catch((error)=>{console.log(error)});
+
+  // Product.findByPk(prodId).then((product) => {
+  //   if (!product) {
+  //     return res.redirect('/');
+  //   }
+  //   res.render('admin/edit-product', {
+  //     pageTitle: 'Edit Product',
+  //     path: '/admin/edit-product',
+  //     editing: editMode,
+  //     product: product
+  //   });
+  // }).catch((error)=>{
+  //   console.log(error);
+  // });
 };
 
 exports.postEditProduct = (req, res, next) => {
@@ -81,7 +92,9 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  Product.findAll().then((products) => {
+  req.user.getProducts()
+  .then((products) => {
+    console.log("Admin products with seq relation");
     res.render('admin/products', {
       prods: products,
       pageTitle: 'Admin Products',
@@ -90,6 +103,16 @@ exports.getProducts = (req, res, next) => {
   }).catch((error)=>{
     console.log(error);
   });
+
+  // Product.findAll().then((products) => {
+  //   res.render('admin/products', {
+  //     prods: products,
+  //     pageTitle: 'Admin Products',
+  //     path: '/admin/products'
+  //   });
+  // }).catch((error)=>{
+  //   console.log(error);
+  // });
 };
 
 exports.postDeleteProduct = (req, res, next) => {
