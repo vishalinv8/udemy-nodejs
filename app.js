@@ -12,6 +12,8 @@ const shopRoutes = require("./routes/shop");
 
 const staticRoutes = require("./routes/static");
 
+const sequelize = require('./utils/database');
+
 const errorController = require("./controllers/404");
 
 app.use(bodyParser.urlencoded({extended:false}));
@@ -30,6 +32,14 @@ app.use(staticRoutes);
 
 app.use(errorController.get404);
 
-app.listen(2020, (req, res)=>{
-    console.log("Node server listening on 2020");
+
+sequelize.sync().then((results)=>{
+    console.log(results);
+    app.listen(2020, (req, res)=>{
+        console.log("Node server listening on 2020");
+    });
+
+}).catch(()=>{
+
 });
+
