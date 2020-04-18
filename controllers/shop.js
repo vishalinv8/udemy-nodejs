@@ -2,7 +2,6 @@ const Product = require("../models/product");
 const Cart = require('../models/cart');
 
 exports.getProducts = (req, res, next) => {
-
     Product.findAll().then((products)=>{
           res.render("shop/product-list", {
             path:"/products",
@@ -16,22 +15,31 @@ exports.getProducts = (req, res, next) => {
 };
 
 exports.getProduct = (req, res, next) => {
-    const productId = req.params.productId;
-    Product.findById(productId).then(([prodInfo, fieldData])=>{
-      if(typeof prodInfo[0] !== 'undefined'){
-          res.render("shop/product-detail", {
-              path:"/products",
-              product:prodInfo[0],
-              pageTitle:prodInfo[0].title + "  Product",
-              extra:""
-          });
-      }
-      else{
-        res.redirect('/');
-      }
-    }).catch((err)=>{
-      console.log(err);
+  const prodId = req.params.productId;
+  
+  // Multiple product fetch
+  
+  // Product.findAll({ where: { id: prodId } })
+  //   .then(products => {
+  //     res.render('shop/product-detail', {
+  //       product: products[0],
+  //       pageTitle: products[0].title,
+  //       path: '/products'
+  //     });
+  //   })
+  //   .catch(err => console.log(err));
+
+  // Single product fetch
+  
+  Product.findByPk(prodId)
+    .then(product => {
+      res.render('shop/product-detail', {
+        product: product,
+        pageTitle: product.title,
+        path: '/products'
+      });
     })
+    .catch(err => console.log(err));
 };
 
 exports.getIndex = (req, res, next) => {

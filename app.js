@@ -34,12 +34,10 @@ app.use(errorController.get404);
 
 
 sequelize.sync().then((results)=>{
-    console.log(results);
     app.listen(2020, (req, res)=>{
         console.log("Node server listening on 2020");
     });
-
-}).catch(()=>{
-
+}).catch((error)=>{
+    console.log(error);
 });
 
