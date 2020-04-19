@@ -80,7 +80,9 @@ Framework: Helper functions, tools & rules that help you build your application.
 #Pending Assignment - 
 Lecture no 93
 
-To be continued....111
+
+Complete section11 Full CRUD Application With Sequelize
+To be continued....177
 
 
 
