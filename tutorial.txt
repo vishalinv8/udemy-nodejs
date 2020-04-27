@@ -82,7 +82,17 @@ Lecture no 93
 
 
 Complete section11 Full CRUD Application With Sequelize
-To be continued....177
+
+# Difference between JSON and JavaScript objects - 
+
+Object literal syntax is the simplest way to create javascript objects. You can easily create an object using object literal
+
+JSON, on the other hand, is widely used as language independent data transfer format between computer systems. It derives from Javascript object literal syntax, borrowing its simplicity, and therefore its syntax is very close to that of object literal. However, JSON format is language independent, so it is not a term only limited to javascript as opposed to object literal.
+
+- The only noticeable difference is that all names in JSON must be wrapped in double quotes.
+- Safe to say that all JSON data are valid Javascript object
+
+Javascript has built-in support for conversion between JSON and javascript object. To convert an object ‘obj’ to a JSON data, you can use JSON.stringify(obj). To create javascript object from JSON data ‘data1’, you can use JSON.parse(data1)
 
 
 
