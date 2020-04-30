@@ -28,7 +28,6 @@ class Product{
 
   static findById(productId){
     const db = getDb();
-    console.log("findById123", productId);
     return db
       .collection('products')
       .find({_id:new mongodb.ObjectId(productId)})
