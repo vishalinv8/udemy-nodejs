@@ -12,9 +12,11 @@
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" value="<% if (editing) { %><%= product.title %><% } %>">
             </div>
-            <div class="form-control image">
-                <img src="<%= product.imageUrl %>" height="150" width="300" alt="<%= product.title %>">
-            </div>
+            <% if(editing){ %>
+                <div class="form-control image">
+                    <img src="<%= product.imageUrl %>" height="150" width="300" alt="<%= product.title %>">
+                </div>
+            <% } %>
             <div class="form-control">
                 <label for="imageUrl">Image URL</label>
                 <input type="text" name="imageUrl" id="imageUrl" value="<% if (editing) { %><%= product.imageUrl %><% } %>">
